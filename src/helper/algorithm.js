@@ -12,7 +12,7 @@
 		var x = ((r0 << 16) + (r1 & 0xFFFF)) | 0;
 		// Division by 0x100000000 through multiplication by reciprocal.
 		return (x < 0 ? (x + 0x100000000) : x) * 2.3283064365386962890625e-10;
-	} 
+	}
 */
 
 export function generateArray(start, end) {

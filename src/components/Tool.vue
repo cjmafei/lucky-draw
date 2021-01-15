@@ -43,14 +43,14 @@
           </span>
         </el-form-item>
 
-        <!-- <el-form-item label="抽取方式">
+        <el-form-item label="抽取方式">
           <el-select v-model="form.mode" placeholder="请选取本次抽取方式">
             <el-option label="抽1人" :value="1"></el-option>
             <el-option label="抽5人" :value="5"></el-option>
             <el-option label="一次抽取完" :value="0"></el-option>
             <el-option label="自定义" :value="99"></el-option>
           </el-select>
-        </el-form-item> -->
+        </el-form-item>
 
         <el-form-item label="抽取人数" v-if="form.mode === 99">
           <el-input
@@ -114,7 +114,7 @@
       <el-form ref="form" :model="removeInfo" label-width="80px" size="mini">
         <el-form-item label="重置选项">
           <el-radio-group v-model="removeInfo.type">
-            <!-- <el-radio border :label="0">重置全部数据</el-radio> -->
+            <el-radio border :label="0">重置全部数据</el-radio>
             <el-radio border :label="1">重置抽奖配置</el-radio>
             <!-- <el-radio border :label="2">重置名单</el-radio> -->
             <!-- <el-radio border :label="3">重置照片</el-radio> -->
@@ -192,7 +192,7 @@ export default {
       removeInfo: { type: 0 },
       form: {
         category: 'fifthPrize',
-        mode: 1,
+        mode: 0, // 默认一次抽完
         qty: 1,
         allin: false
       },

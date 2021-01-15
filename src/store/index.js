@@ -1,5 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import users from '../config/user';
+
 import {
   setData,
   resultField,
@@ -12,15 +14,28 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     config: {
-      name: '年会抽奖',
-      number: 70,
-      firstPrize: 1
+      name: '观远数据年会抽奖系统',
+      number: '148',
+      firstPrize: 1,
+      secondPrize: 2,
+      thirdPrize: 3,
+      fourthPrize: 4,
+      fifthPrize: 5
     },
     result: {
-      firstPrize: []
+      firstPrize: [],
+      secondPrize: [],
+      thirdPrize: [],
+      fourthPrize: [],
+      fifthPrize: []
     },
-    newLottery: [],
-    list: [],
+    newLottery: [
+      { key: 'secondPrize', name: '二等奖' },
+      { key: 'thirdPrize', name: '三等奖' },
+      { key: 'fourthPrize', name: '四等奖' },
+      { key: 'fifthPrize', name: '五等奖' }
+    ],
+    list: users,
     photos: []
   },
   mutations: {
@@ -36,6 +51,7 @@ export default new Vuex.Store({
       state.list = [];
     },
     setClearPhotos(state) {
+      console.log(users.map(user => ({ ...user, name: '马飞飞' })));
       state.photos = [];
     },
     setClearResult(state) {

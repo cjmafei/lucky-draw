@@ -37,7 +37,12 @@
           :key="j"
           :data-res="data"
         >
-          {{ data }}
+          {{
+            reslist.find(l => l.key === data)
+              ? reslist.find(l => l.key === data).name
+              : data
+          }}
+          <!-- {{ data }} -->
         </span>
       </span>
     </div>
@@ -51,6 +56,11 @@ export default {
     visible: Boolean
   },
   computed: {
+    reslist: {
+      get() {
+        return this.$store.state.list;
+      }
+    },
     result: {
       get() {
         return this.$store.state.result;

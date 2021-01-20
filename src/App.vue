@@ -67,7 +67,7 @@
       </div>
     </transition>
 
-    <el-button
+    <!-- <el-button
       class="audio"
       type="text"
       @click="
@@ -80,7 +80,7 @@
         class="iconfont"
         :class="[audioPlaying ? 'iconstop' : 'iconplay1']"
       ></i>
-    </el-button>
+    </el-button> -->
 
     <LotteryConfig :visible.sync="showConfig" @resetconfig="reloadTagCanvas" />
     <Tool
@@ -92,7 +92,7 @@
     />
     <Result :visible.sync="showResult"></Result>
 
-    <audio
+    <!-- <audio
       id="audiobg"
       preload="auto"
       controls
@@ -102,15 +102,15 @@
     >
       <source :src="audioSrc" />
       你的浏览器不支持audio标签
-    </audio>
+    </audio> -->
   </div>
 </template>
 <script>
 import LotteryConfig from '@/components/LotteryConfig';
 import Publicity from '@/components/Publicity';
 import Tool from '@/components/Tool';
-import bgaudio from '@/assets/bg.mp3';
-import beginaudio from '@/assets/begin.mp3';
+// import bgaudio from '@/assets/bg.mp3';
+// import beginaudio from '@/assets/begin.mp3';
 import {
   getData,
   configField,
@@ -224,9 +224,9 @@ export default {
       showConfig: false,
       showResult: false,
       resArr: [],
-      category: '',
-      audioPlaying: false,
-      audioSrc: bgaudio
+      // audioPlaying: false,
+      // audioSrc: bgaudio,
+      category: ''
     };
   },
   watch: {
@@ -257,25 +257,25 @@ export default {
       }
       this.startTagCanvas();
     },
-    playHandler() {
-      this.audioPlaying = true;
-    },
-    pauseHandler() {
-      this.audioPlaying = false;
-    },
-    playAudio(type) {
-      if (type) {
-        this.$el.querySelector('#audiobg').play();
-      } else {
-        this.$el.querySelector('#audiobg').pause();
-      }
-    },
-    loadAudio() {
-      this.$el.querySelector('#audiobg').load();
-      this.$nextTick(() => {
-        this.$el.querySelector('#audiobg').play();
-      });
-    },
+    // playHandler() {
+    //   this.audioPlaying = true;
+    // },
+    // pauseHandler() {
+    //   this.audioPlaying = false;
+    // },
+    // playAudio(type) {
+    //   if (type) {
+    //     this.$el.querySelector('#audiobg').play();
+    //   } else {
+    //     this.$el.querySelector('#audiobg').pause();
+    //   }
+    // },
+    // loadAudio() {
+    //   this.$el.querySelector('#audiobg').load();
+    //   this.$nextTick(() => {
+    //     this.$el.querySelector('#audiobg').play();
+    //   });
+    // },
     getPhoto() {
       database.getAll(DB_STORE_NAME).then(res => {
         if (res && res.length > 0) {
@@ -297,7 +297,10 @@ export default {
       this.createCanvas();
       const { speed } = this;
       window.TagCanvas.Start('rootcanvas', 'tags', {
-        textColour: null,
+        textColour: '#095fdb',
+        shadow: '#ffffff',
+        shadowBlur: 3,
+        shadowOffset: [2, 2],
         initial: speed(),
         dragControl: 1,
         textHeight: 20,
@@ -314,8 +317,8 @@ export default {
     toggle(form) {
       const { speed, config } = this;
       if (this.running) {
-        this.audioSrc = bgaudio;
-        this.loadAudio();
+        // this.audioSrc = bgaudio;
+        // this.loadAudio();
 
         window.TagCanvas.SetSpeed('rootcanvas', speed());
         this.showRes = true;
@@ -329,8 +332,8 @@ export default {
           return;
         }
 
-        this.audioSrc = beginaudio;
-        this.loadAudio();
+        // this.audioSrc = beginaudio;
+        // this.loadAudio();
 
         const { number } = config;
         const { category, mode, qty, remain, allin } = form;
@@ -369,7 +372,7 @@ export default {
 #root {
   height: 100%;
   position: relative;
-  background-image: url('./assets/bg1.jpg');
+  background-image: url('./assets/bg2.png');
   background-size: 100% 100%;
   background-position: center center;
   background-repeat: no-repeat;

@@ -41,19 +41,19 @@ export function conversionCategoryName(key) {
   let name = '';
   switch (key) {
     case 'firstPrize':
-      name = '一等奖';
+      name = '一夜暴富';
       break;
     case 'secondPrize':
-      name = '二等奖';
+      name = '招财进宝';
       break;
     case 'thirdPrize':
-      name = '三等奖';
+      name = '福星高照奖';
       break;
     case 'fourthPrize':
-      name = '四等奖';
+      name = '恭喜发财奖';
       break;
     case 'fifthPrize':
-      name = '五等奖';
+      name = '诸事顺利奖';
       break;
     default:
       break;

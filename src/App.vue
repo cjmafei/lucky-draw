@@ -122,6 +122,7 @@ import {
 import { luckydrawHandler } from '@/helper/algorithm';
 import Result from '@/components/Result';
 import { database, DB_STORE_NAME } from '@/helper/db';
+import users from './config/user';
 export default {
   name: 'App',
 
@@ -348,7 +349,9 @@ export default {
         const resArr = luckydrawHandler(
           number,
           allin ? [] : this.allresult,
-          num
+          num,
+          category,
+          users
         );
         this.resArr = resArr;
 

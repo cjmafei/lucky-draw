@@ -46,7 +46,7 @@
         <el-form-item label="抽取方式">
           <el-select v-model="form.mode" placeholder="请选取本次抽取方式">
             <el-option label="抽1人" :value="1"></el-option>
-            <el-option label="抽5人" :value="5"></el-option>
+            <!-- <el-option label="抽5人" :value="5"></el-option> -->
             <el-option label="一次抽取完" :value="0"></el-option>
             <el-option label="自定义" :value="99"></el-option>
           </el-select>

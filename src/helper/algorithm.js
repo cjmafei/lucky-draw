@@ -33,13 +33,24 @@ export function randomNum(minNum = 1, maxNum) {
  * @param {array} won 已中奖
  * @param {number} num 本次抽取人数
  */
-export function luckydrawHandler(total, won = [], num) {
+export function luckydrawHandler(total, won = [], num, category, users) {
   const peolist = generateArray(1, Number(total));
   const wons = won;
   const res = [];
   for (let j = 0; j < num; j++) {
     const nodraws = peolist.filter(item => !wons.includes(item));
-    const current = nodraws[randomNum(1, nodraws.length) - 1];
+    let current = null;
+    if (['firstPrize', 'secondPrize', 'thirdPrize'].includes(category)) {
+      current = nodraws[randomNum(1, nodraws.length) - 1];
+      let user = users.find(user => user.key === current);
+      while (user.type === 0) {
+        console.log('while');
+        current = nodraws[randomNum(1, nodraws.length) - 1];
+        user = users.find(user => user.key === current);
+      }
+    } else {
+      current = nodraws[randomNum(1, nodraws.length) - 1];
+    }
     res.push(current);
     wons.push(current);
   }
